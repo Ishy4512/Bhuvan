@@ -4,7 +4,7 @@ import Room from './Room';
 import './App.css';
 
 // Define your secret key here. In a real app, this would be in an environment variable.
-const ADMIN_SECRET_KEY = 'your_secret_admin_key'; // CHANGE THIS TO A SECURE KEY!
+const ADMIN_SECRET_KEY = process.env.REACT_APP_ADMIN_SECRET_KEY || 'default_secret_key'; // Use environment variable or a default
 
 // Component for the initial room joining page
 const JoinRoomPage = () => {
