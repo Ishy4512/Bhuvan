@@ -36,6 +36,7 @@ io.on('connection', (socket) => {
     }
     if (!userFound) {
       roomUsers[room].push({ id: socket.id, username });
+    }
     console.log(`${username} joined room: ${room}`);
 
     // Send current room state to the joining user
