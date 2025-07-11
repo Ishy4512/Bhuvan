@@ -26,9 +26,16 @@ io.on('connection', (socket) => {
     if (!roomUsers[room]) {
       roomUsers[room] = [];
     }
-    // Remove any existing entry for this socket.id before adding the new one
-    roomUsers[room] = roomUsers[room].filter(user => user.id !== socket.id);
-    roomUsers[room].push({ id: socket.id, username });
+    let userFound = false;
+    for (let i = 0; i < roomUsers[room].length; i++) {
+      if (roomUsers[room][i].username === username) {
+        roomUsers[room][i].id = socket.id; // Update socket ID for existing username
+        userFound = true;
+        break;
+      }
+    }
+    if (!userFound) {
+      roomUsers[room].push({ id: socket.id, username });
     console.log(`${username} joined room: ${room}`);
 
     // Send current room state to the joining user
