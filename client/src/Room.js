@@ -3,7 +3,7 @@ import ReactPlayer from 'react-player';
 import io from 'socket.io-client';
 
 // Connect to the Socket.IO server
-const socket = io(process.env.REACT_APP_BACKEND_URL || 'http://localhost:4000');
+const socket = io('https://bhuvan-2w6m.onrender.com');
 
 const Room = ({ room, username }) => {
   const [inputUrl, setInputUrl] = useState('');
